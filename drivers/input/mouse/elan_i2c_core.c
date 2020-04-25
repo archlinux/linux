@@ -386,9 +386,12 @@ static int elan_query_device_parameters(struct elan_tp_data *data)
 		--data->max_y;
 	}
 
+        /* Short-circuiting y_traces causes uninitialized use
+         * in some cases. Use bitwise or instead.
+         */
 	if (device_property_read_u32(&client->dev,
 				     "elan,x_traces",
-				     &x_traces) ||
+				     &x_traces) |
 	    device_property_read_u32(&client->dev,
 				     "elan,y_traces",
 				     &y_traces)) {
