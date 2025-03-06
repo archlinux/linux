@@ -3,6 +3,10 @@
 # helpers for dealing with atomics.tbl
 
 #meta_in(meta, match)
+do_nothing() {
+    echo "Hello, world!"
+}
+
 meta_in()
 {
 	case "$1" in
